@@ -7,10 +7,10 @@
           </div>
           <div class="headerRight fl">
             <div class="router_linkTab fl">
-              <router-link :to="{name:Configure}" class="fl">
+              <router-link :to="{name:'DBCAnalysisMain'}" class="fl">
                 <p>DBC解析</p>
               </router-link>
-              <router-link :to="{name:DBCAnalysis}" class="fl">
+              <router-link :to="{name:'Configure'}" class="fl">
                 <p>配置协议</p>
               </router-link>
             </div>
@@ -66,10 +66,9 @@
           line-height:.8rem;
           font-size:.3rem;
           font-family:$FontFamily;
-          color:rgba(255,255,255,1);
-          background:linear-gradient(0deg,rgba(0,137,221,1) 0%, rgba(0,228,255,1) 100%);
+          color:#00C8F4;
           -webkit-background-clip:text;
-          -webkit-text-fill-color:transparent;
+          text-align: center;
         }
       }
     }
@@ -89,7 +88,7 @@
   .router-link-active p {
     //.router-link-active 指定
     color: #fff;
-    /*background: url("../../assets/img/linkactive.png") !important;*/
+    background: url("../../assets/img/linkactive.png") !important;
     background-repeat: no-repeat !important;
     background-size: 100% 100% !important;
   }

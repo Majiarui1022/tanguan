@@ -63,4 +63,24 @@ abbr,acronym { border:0}
 @function SiceColor(){
   @return rgba(2,246,255,1)
 }
+/*文本格式化，超出范围，显示省略号*/
+@mixin text-overflow($width:100%,$display:block) {
+  width: $width;
+  display: $display;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
+@function addWidth($width1,$width2){
+  @return $width1/$width2;
+}
+
+
+//公共字体样式
+@mixin SizeStyle($color:#02F6FF,$block:block,$size:.12rem){
+  color:$color;
+  display: $block;
+  font-size: $size
+}

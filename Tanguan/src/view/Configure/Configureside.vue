@@ -67,7 +67,6 @@
         height:.42rem;
         position: relative;
         border:1px solid rgba(2,246,255,1);
-        position: relative;
         span{
           display: block;
           font-size:$GiantSize;
@@ -113,6 +112,20 @@
               margin-right:.36rem;
             }
           }
+          &::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+          }
+          &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: #06A9AF;
+          }
+          &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
+          }
         }
         &.hide{
           display: none;
@@ -136,6 +149,20 @@
             .One{
               margin-right:.36rem;
             }
+          }
+          &::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 20px;     /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+          }
+          &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: #06A9AF;
+          }
+          &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
           }
         }
         &.hide{

@@ -5,7 +5,8 @@
     </div>
     <div class="menu_box">
       <div class="tab_data">
-      <table>
+        <div class="tab_data_scroll">
+          <table>
         <tbody>
           <tr>
             <td class="Num fl">1</td>
@@ -77,9 +78,50 @@
             <td class="Name fl">Name</td>
             <td class="Nature fl">Nature</td>
           </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
+          <tr>
+            <td class="Num fl">14</td>
+            <td class="Name fl">Name</td>
+            <td class="Nature fl">Nature</td>
+          </tr>
         </tbody>
       </table>
-    </div>
+        </div>
+      </div>
       <div class="tab_qie">
 <!--        支架   勿删-->
         <div class="cheng">
@@ -200,34 +242,41 @@
         width:$width;
         height: 5.59rem;
         border-bottom: 1px solid  #1E2D71;
-        table{
-          width: 12.65rem;
-          height: 5.59rem;
-          tr{
-            height:.37rem;
-            font-size:$Littleize;
-            color:SiceColor();
-            overflow: hidden;
-            td{
-              text-align: center;
-              line-height: .37rem;
-              border-right:1px solid #1E2D71;
-              border-bottom: 1px solid #1E2D71;;
-            }
-            .Num{
-              width: 3.5%;
-            }
-            .Name{
-              width: 5%;
-              text-align: left;
-              text-indent: 5px;
-            }
-            .Nature{
-              width: 91.1%;
-              text-align: left;
-              text-indent: 14px;
+        overflow: hidden;
+        .tab_data_scroll{
+          width:$width;
+          height:$height;
+          overflow: auto;
+          table{
+            width: 12.65rem;
+            height: 5.59rem;
+            tr{
+              height:.37rem;
+              font-size:$Littleize;
+              color:SiceColor();
+              overflow: hidden;
+              td{
+                text-align: center;
+                line-height: .37rem;
+                border-right:1px solid #1E2D71;
+                border-bottom: 1px solid #1E2D71;;
+              }
+              .Num{
+                width: 3.5%;
+              }
+              .Name{
+                width: 5%;
+                text-align: left;
+                text-indent: 5px;
+              }
+              .Nature{
+                width: 91.1%;
+                text-align: left;
+                text-indent: 14px;
+              }
             }
           }
+
         }
       }
 
@@ -245,6 +294,7 @@
             width: 1.6rem;
             height:.24rem;
             .but{
+              /*padding:8px 15px 7px 16px;*/
               width: 31.5%;
               height:$height;
               font-size: $Littleize;
@@ -252,6 +302,7 @@
               text-align: center;
               line-height: .24rem;
               border:1px solid SiceColor();
+              cursor: pointer;
               &.active{
                 color:#fff;
                 background:rgba(18,49,95,1);
@@ -260,6 +311,7 @@
           }
           /*新建脚本*/
           .new_script{
+            cursor: pointer;
             width:.97rem;
             height:.32rem;
             border:1px solid rgba(32,39,189,1);

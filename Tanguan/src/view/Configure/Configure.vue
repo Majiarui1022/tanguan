@@ -6,15 +6,17 @@
     <el-main>
       <Configuremain></Configuremain>
     </el-main>
+    <ConfigureEnit></ConfigureEnit>
   </el-container>
 </template>
 
 <script>
     import Configureside from "@/view/Configure/Configureside";
     import Configuremain from "@/view/Configure/Configuremain";
+    import ConfigureEnit from "@/view/Configure/enit";
     export default {
         name: "Configure",
-      components: {Configuremain, Configureside}
+      components: {ConfigureEnit, Configuremain, Configureside}
     }
 </script>
 

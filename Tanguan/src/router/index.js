@@ -21,6 +21,18 @@ export default new Router({
           path: '/DBCAnalysis',
           name: 'DBCAnalysis',
           component:() => import('@/view/DBCAnalysis/DBCAnalysis'),
+          children:[
+            {
+              path: '/DBCAnalysisMain',
+              name: 'DBCAnalysisMain',
+              component:() => import('@/view/DBCAnalysis/DBCAnalysisMain'),
+            },
+            {
+              path: '/DBCAnalysisMainTwo',
+              name: 'DBCAnalysisMainTwo',
+              component:() => import('@/view/DBCAnalysis/DBCAnalysisMainTwo'),
+            }
+          ]
         }
       ]
     }

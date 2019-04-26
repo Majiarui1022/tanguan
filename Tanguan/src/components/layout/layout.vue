@@ -19,6 +19,9 @@
 
 <style lang="scss" scoped>
   .layout {
+    /*width: 19.206rem;*/
+    /*height: 19.206rem;*/
+    /*margin:0 auto;*/
     height: 100%;
   }
   .el-container {
