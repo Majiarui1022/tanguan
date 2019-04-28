@@ -3,26 +3,26 @@
     <p>编辑协议</p>
 
     <div class="ListBox">
-      <div class="ScriptFirst_name">
-        <span>Config-14v-20181010</span>
+      <div class="ScriptFirst_name" v-on:click="ChangeScript">
+        <span v-if="BigScriptList">Config=14v-20181010</span>
         <div class="low-jian">
           <img src="../../assets/img/right_down.png" alt="">
         </div>
       </div>
 
-      <div class="ScriptList">
+      <div class="ScriptList" :class="isScript == true?'':'hide'">
         <ul>
-          <li>
-            <span class="One fl">Part1</span>
-            <span class="Two fl">CAN_无线通讯验证</span>
+          <li v-if="BigScriptList" v-for="(val,index) in BigScriptList">
+<!--            <span class="One fl">Part1</span>-->
+            <span class="Two fl" :id="val.id">{{val.name}}</span>
           </li>
         </ul>
       </div>
-      <div class="PartList">
+      <div class="PartList"  :class="isScript == true?'hide':''">
         <ul>
-          <li>
-            <span class="One fl">Part1</span>
-            <span class="Two fl">CAN_无线通讯验证</span>
+          <li v-if="PartLists" v-for="value in PartLists" v-on:click="ShowSystem">
+            <span class="One fl">{{value.name1}}</span>
+            <span class="Two fl">{{value.name2}}</span>
           </li>
         </ul>
       </div>
@@ -31,8 +31,55 @@
 </template>
 
 <script>
-    export default {
-        name: "Configureside"
+  export default {
+    props:{
+      BigScriptList:{
+        type:Array
+      },
+      PartLists:{
+        type:Array
+      }
+    },
+        name: "Configureside",
+      data(){
+          return{
+            isScript:false,
+            ShowScript:0            //默认显示协议的下标
+          }
+      },
+      created(){
+        // ParstList({
+        //
+        // }).then(res=>{
+        //   console.log(res)
+        // })
+
+        // this.$axios({
+        //   method:'get',
+        //   url:'../../../static/data/PartList.json',
+        // }).then(res=>{
+        //   console.log(res)
+        // }).catch(err=>{
+        //   console.log(err)
+        // })
+      },
+      methods:{
+        ChangeScript(){
+          this.isScript = !this.isScript
+        },
+
+        ShowSystem(){
+          console.log(123)
+        }
+      },
+      watch:{
+        BigScriptList(news,old){
+          console.log(news[0].name)
+        },
+        PartLists(news,old){
+          console.log(news)
+        }
+      }
     }
 </script>
 
@@ -110,7 +157,12 @@
             color:SiceColor();
             .One{
               margin-right:.36rem;
+              cursor: pointer;
             }
+            .Two{
+              cursor: pointer;
+            }
+
           }
           &::-webkit-scrollbar {/*滚动条整体样式*/
             width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
@@ -132,7 +184,6 @@
         }
       }
       .PartList{
-        display: none;
         ul{
           width: $width;
           height:$height;
@@ -148,6 +199,10 @@
             color:SiceColor();
             .One{
               margin-right:.36rem;
+              cursor: pointer;
+            }
+            .Two{
+              cursor: pointer;
             }
           }
           &::-webkit-scrollbar {/*滚动条整体样式*/

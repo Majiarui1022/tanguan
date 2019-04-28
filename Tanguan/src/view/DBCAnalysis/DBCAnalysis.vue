@@ -4,18 +4,20 @@
       <DBCAnalysisSide></DBCAnalysisSide>
     </el-aside>
     <el-main>
-<!--      <DBCAnalysisMain></DBCAnalysisMain>-->
-      <router-view></router-view>
+      <DBCAnalysisMain></DBCAnalysisMain>
+      <DBCAnalysisMainTwo></DBCAnalysisMainTwo>
+<!--      <router-view></router-view>-->
     </el-main>
   </el-container>
 </template>
 
 <script>
     import DBCAnalysisSide from "@/view/DBCAnalysis/DBCAnalysisSide";
-    // import DBCAnalysisMain from "@/view/DBCAnalysis/DBCAnalysisMain";
+    import DBCAnalysisMain from "@/view/DBCAnalysis/DBCAnalysisMain";
+    import DBCAnalysisMainTwo from "@/view/DBCAnalysis/DBCAnalysisMainTwo";
     export default {
         name: "DBCAnalysis",
-      components: {DBCAnalysisSide}
+      components: {DBCAnalysisMainTwo, DBCAnalysisMain,DBCAnalysisSide}
     }
 </script>
 

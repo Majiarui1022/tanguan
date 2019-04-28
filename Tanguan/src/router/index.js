@@ -10,6 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'layout',
+      redirect:'/Configure',
       component: layout,
       children:[
         {
@@ -27,11 +28,6 @@ export default new Router({
               name: 'DBCAnalysisMain',
               component:() => import('@/view/DBCAnalysis/DBCAnalysisMain'),
             },
-            {
-              path: '/DBCAnalysisMainTwo',
-              name: 'DBCAnalysisMainTwo',
-              component:() => import('@/view/DBCAnalysis/DBCAnalysisMainTwo'),
-            }
           ]
         }
       ]

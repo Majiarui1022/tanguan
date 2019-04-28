@@ -1,5 +1,5 @@
 <template>
-  <div class="DBCAnalysisMain_BigBox">
+  <div class="DBCAnalysisMain_BigBox" :class="this.$store.state.ShowDBCMainTwo ==  true?'hide':''">
     <div class="DBCA_mebu">
       <div class="DBCA_content">
 <!--        头部公用-->
@@ -21,7 +21,7 @@
                 </div>
               </div>
               <div class="DBCA_but_box">
-                <router-link :to="{name:'DBCAnalysisMainTwo'}" tag="div" class="DBCjiexi_but fl">DBC解析</router-link>
+                <div class="DBCjiexi_but fl" @click="changeDBC">DBC解析</div>
                 <div class="daochu_but fl">导出协议</div>
               </div>
             </div>
@@ -30,244 +30,597 @@
 <!--        表格数据-->
         <div class="DBCA_con_tab">
           <div class="table_Box">
-            <table>
-              <tbody>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              <tr>
-                <td class="table_num"></td>
-                <td class="table_Part_NO"></td>
-                <td class="table_CAN_SEND_ID"></td>
-                <td class="table_Message_send"></td>
-                <td class="table_CAN_REV_ID"></td>
-                <td class="table_Length_SEND"></td>
-                <td class="table_Message_REV"></td>
-              </tr>
-              </tbody>
-            </table>
+            <div class="Table">
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+              <div class="Table_row">
+                <div class="table_num fl">1</div>
+                <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
+                <div class="table_Message_send fl">Message_SEND</div>
+                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
+                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Message_REV fl">Message_REV</div>
+              </div>
+            </div>
+<!--            <table>-->
+<!--              <tbody>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="table_num"></td>-->
+<!--                <td class="table_Part_NO"></td>-->
+<!--                <td class="table_CAN_SEND_ID"></td>-->
+<!--                <td class="table_Message_send"></td>-->
+<!--                <td class="table_CAN_REV_ID"></td>-->
+<!--                <td class="table_Length_SEND"></td>-->
+<!--                <td class="table_Message_REV"></td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
           </div>
         </div>
       </div>
@@ -277,7 +630,15 @@
 
 <script>
     export default {
-        name: "DBCAnalysisMain"
+        name: "DBCAnalysisMain",
+      methods:{
+        changeDBC(){
+          this.$store.commit('SHOWDBC_MAINTWO',true)
+        }
+      },
+      destroyed() {
+        this.$store.commit('SHOWDBC_MAINTWO',false)
+      }
     }
 </script>
 
@@ -389,9 +750,49 @@
           border:1px solid rgba(30,45,113,1);
           overflow: hidden;
           .table_Box{
-            width: 14.45rem;
+            /*width: 14.45rem;*/
+            width: $width;
             height:$height;
             overflow: auto;
+            .Table{
+              width: $width;
+              height:$height;
+              .Table_row{
+                border-bottom: 1px solid #1E2D71;
+                height:.37rem;
+                overflow: hidden;
+                div{
+                  height:.37rem;
+                  border-right: 1px solid #1E2D71;
+                  font-size: $Littleize;
+                  color:SiceColor();
+                  text-align: center;
+                  line-height: .37rem;
+                }
+                .table_num{
+                  /*width:addWidth(.42rem,12.45);*/
+                  width:3.37%;
+                }
+                .table_Part_NO{
+                  width:10.68%;
+                }
+                .table_CAN_SEND_ID{
+                  width:18.55%;
+                }
+                .table_Message_send{
+                  width:18.23%;
+                }
+                .table_CAN_REV_ID{
+                  width:15.26%;
+                }
+                .table_Length_SEND{
+                  width:17.67%;
+                }
+                .table_Message_REV{
+                  width:15.54%;
+                }
+              }
+            }
             table{
               width: $width;
               height:$height;
@@ -444,6 +845,9 @@
           }
         }
       }
+    }
+    &.hide{
+      display: none;
     }
   }
 </style>

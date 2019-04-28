@@ -1,5 +1,5 @@
 <template>
-  <div class="DBCAnalysisMain_BigBox">
+  <div class="DBCAnalysisMainTwo_BigBox" :class="this.$store.state.ShowDBCMainTwo == true?'':'hide'">
     <div class="DBCA_mebu">
       <div class="DBCA_content">
         <!--        头部公用-->
@@ -454,6 +454,9 @@
         aaaa(){
           console.log(123)
         }
+      },
+      destroyed() {
+        this.$store.commit('SHOWDBC_MAINTWO',false)
       }
     }
 </script>
@@ -461,7 +464,7 @@
 
 <style lang="scss" scoped>
 
-  .DBCAnalysisMain_BigBox{
+  .DBCAnalysisMainTwo_BigBox{
     width: $width;
     height:$height;
     .DBCA_mebu{
@@ -566,7 +569,8 @@
           overflow: hidden;
           position: relative;
           .table_Box{
-            width: 14.45rem;
+            /*width: 14.45rem;*/
+            width: $width;
             height: 3.41rem;
             border-bottom: 1px solid #1E2D71;
             overflow: auto;
@@ -671,8 +675,9 @@
                  overflow: hidden;
                   margin-top: .23rem;
                   .addDBC_Left{
-                    width: 5.95rem;
+                    /*width: 5.95rem;*/
                     height:3.05rem;
+                    width: 45%;
                     border:1px solid SiceColor();
                     p{
                       font-size:.23rem;
@@ -686,7 +691,7 @@
 
                       tr{
                         th,td{
-                          padding:0 .15rem;
+                          text-align: center;
                           font-size: .14rem;
                           height:.31rem;
                           line-height: .31rem;
@@ -783,7 +788,8 @@
                     }
                   }
                   .showDBC_Right{
-                    width: 6.49rem;
+                    /*width: 6.49rem;*/
+                    width: 45%;
                     height:3.05rem;
                     border:1px solid SiceColor();
                     margin-left: .05rem;
@@ -802,16 +808,16 @@
                         color:#00FCFF;
                       }
                       .Name{
-                        width: 2.46rem;
+                        width: 38.4%;
                       }
                       .Num{
-                        width: 1.27rem;
+                        width: 19.2%;
                       }
                       .unit{
-                        width:1.17rem;
+                        width: 19.3%;
                       }
                       .states{
-                        width: 1.31rem;
+                        width: 18.3%;
                       }
                     }
                     .Table_scrollY{
@@ -851,16 +857,17 @@
                               line-height: .35rem;
                             }
                             .Name{
-                              width: 2.46rem;
+                              width: 40%;
                             }
                             .Num{
-                              width: 1.27rem;
+                              width: 20%;
                             }
                             .unit{
-                              width:1.17rem;
+                              width:20%;
                             }
                             .states{
-                              width: 1.31rem;
+                              width: 19%;
+                            }
                               .reds{
                                 width:16px;
                                 height:16px;
@@ -879,7 +886,6 @@
                                 margin:0 auto;
                                 margin-top:.11rem;
                               }
-                            }
                           }
                         }
 
@@ -922,6 +928,9 @@
           }
         }
       }
+    }
+    &.hide{
+      display: none;
     }
   }
 </style>
