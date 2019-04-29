@@ -23,7 +23,6 @@ const store = new Vuex.Store({
     //控制添加脚本显示隐藏
     SHOWENIT_HIDE(state,showEnit){
       state.ShowEnit = showEnit;
-      console.log(state.ShowEnit);
     },
     //控制DBCMain的显示与隐藏
     SHOWDBC_MAINTWO(state,showDBC){

@@ -4,9 +4,9 @@
 
     <div class="ListBox">
       <div class="ScriptFirst_name" v-on:click="ChangeScript">
-        <span v-if="BigScriptList">Config=14v-20181010</span>
+        <span v-if="BigScriptList[ShowScript]">{{BigScriptList[ShowScript].name}}</span>
         <div class="low-jian">
-          <img src="../../assets/img/right_down.png" alt="">
+          <img src="../../assets/img/right_down.png" alt="" :class="isScript == true?'active':''">
         </div>
       </div>
 
@@ -14,15 +14,15 @@
         <ul>
           <li v-if="BigScriptList" v-for="(val,index) in BigScriptList">
 <!--            <span class="One fl">Part1</span>-->
-            <span class="Two fl" :id="val.id">{{val.name}}</span>
+            <span class="Two fl" :id="val.id" v-on:click="selectScript(val.id,index)">{{val.name}}</span>
           </li>
         </ul>
       </div>
       <div class="PartList"  :class="isScript == true?'hide':''">
         <ul>
-          <li v-if="PartLists" v-for="value in PartLists" v-on:click="ShowSystem">
-            <span class="One fl">{{value.name1}}</span>
-            <span class="Two fl">{{value.name2}}</span>
+          <li v-if="PartLists" v-for="value in PartLists" v-on:click="ShowSystem(value.id)">
+            <span class="One fl">{{value.serial_num}}</span>
+            <span class="Two fl">{{value.name}}</span>
           </li>
         </ul>
       </div>
@@ -64,12 +64,23 @@
         // })
       },
       methods:{
+
+          // 控制脚本显示与隐藏
         ChangeScript(){
           this.isScript = !this.isScript
         },
 
-        ShowSystem(){
-          console.log(123)
+        ShowSystem(id){
+          this.$store.commit("PART_ID",id)
+          this.$emit("SHowPartAllData")
+        },
+
+
+        selectScript(id,index){
+          this.$store.commit("SCRIPT_ID",id)
+          this.isScript = !this.isScript;
+          this.ShowScript = index
+          this.$emit("showPartAndSystem")
         }
       },
       watch:{
@@ -131,7 +142,16 @@
           margin-top: -.065rem;
           img{
             display: block;
+            &.active{
+              -webkit-animation: arrow 1.5s infinite ease-in-out;
+              animation-iteration-count:1;
+            }
           }
+        }
+      }
+      @-webkit-keyframes arrow {
+        100% {
+          -webkit-transform:translate(0, -10px) rotateZ(-180deg)
         }
       }
       .ScriptList,.PartList{

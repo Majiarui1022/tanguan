@@ -5,9 +5,9 @@
     </div>
     <div class="menu_box">
       <div class="tab_data">
-        <div class="tab_data_scroll" :class="isSystem !=2? '':'hide'">
+        <div class="tab_data_scroll" :class="isSystem ==1 || isSystem ==0 ? '':'hide'">
           <table>
-            <tbody  v-for="value in Systems">
+            <tbody v-if="SystemList">
               <tr>
                 <td class="Num fl">1</td>
                 <td class="Name fl">Name</td>
@@ -16,32 +16,32 @@
               <tr>
                 <td class="Num fl">2</td>
                 <td class="Name fl">项目名称</td>
-                <td class="Nature fl">{{value.Proname}}</td>
+                <td class="Nature fl">{{SystemList.project_name}}</td>
               </tr>
               <tr>
                 <td class="Num fl">3</td>
                 <td class="Name fl">设定时间</td>
-                <td class="Nature fl">{{value.set_Time}}</td>
+                <td class="Nature fl">{{SystemList.set_time}}</td>
               </tr>
               <tr>
                 <td class="Num fl">4</td>
                 <td class="Name fl">间隔运行</td>
-                <td class="Nature fl">{{value.run == 1?'ON':'OFF'}}</td>
+                <td class="Nature fl">{{SystemList.is_interval == 1?'ON':'OFF'}}</td>
               </tr>
               <tr>
                 <td class="Num fl">5</td>
                 <td class="Name fl">休息时间</td>
-                <td class="Nature fl">{{value.restTime}}</td>
+                <td class="Nature fl">{{SystemList.rest_time}}</td>
               </tr>
               <tr>
                 <td class="Num fl">6</td>
                 <td class="Name fl">运行时间</td>
-                <td class="Nature fl">{{value.RunTime}}</td>
+                <td class="Nature fl">{{SystemList.run_time}}</td>
               </tr>
               <tr>
                 <td class="Num fl">7</td>
                 <td class="Name fl">设定次数</td>
-                <td class="Nature fl">{{value.set_Num}}</td>
+                <td class="Nature fl">{{SystemList.set_num}}</td>
               </tr>
               <tr>
                 <td class="Num fl">8</td>
@@ -81,7 +81,7 @@
             </tbody>
           </table>
         </div>
-        <div class="tab_data_scroll-Y" :class="isSystem == 2?'':'hide'">
+        <div class="tab_data_scroll-Y" :class="isSystem == 2 || isSystem == 3 ?'':'hide'">
 <!--          <table>-->
 <!--            <tbody>-->
 <!--              <tr>-->
@@ -106,49 +106,55 @@
             <div class="CAN_Message fl">Message_SEND</div>
             <div class="CAN_Timout fl">Timeout(ms)</div>
           </div>
-          <div class="table_Sec"  v-for="(val,index) in TableData" :class="selectRow == index?'active':''" :key="index" v-on:click="aaa(index)">
+          <div class="table_Sec"  v-for="(val,index) in TableData" :class="selectRow == index?'active':''" :key="index" v-on:click="aaa(index,val.id)">
             <div class="Can_num fl">{{index+2}}</div>
             <div class="CAN_Part_NO fl">
               <input
                 type="text"
-                v-model="val.Part_No"
+                v-model="val.part_no"
+                @blur="changeCAN(val.part_no,val.id,1)"
               >
             </div>
             <div class="Can_Type fl">
               <input
                 type="text"
-                v-model="val.Type"
+                v-model="val.order_type"
                 disabled='false'
               >
             </div>
             <div class="CAN_Time fl">
               <input
                 type="text"
-                v-model="val.Time"
+                v-model="val.delay_time"
+                @blur="changeCAN(val.delay_time,val.id,2)"
               >
             </div>
             <div class="Can_SEND_ID fl">
               <input
                 type="text"
-                v-model="val.CAN_SEND_ID"
+                v-model="val.can_send_id"
+                @blur="changeCAN(val.can_send_id,val.id,3)"
               >
             </div>
             <div class="CAN_Length_SEND fl">
               <input
                 type="text"
-                v-model="val.Length_SEND"
+                v-model="val.length_send"
+                @blur="changeCAN(val.length_send,val.id,4)"
               >
             </div>
             <div class="CAN_Message fl">
               <input
                 type="text"
-                v-model="val.Message_SEND"
+                v-model="val.message_send"
+                @blur="changeCAN(val.message_send,val.id,5)"
               >
             </div>
             <div class="CAN_Timout fl">
               <input
                 type="text"
-                v-model="val.Timeout"
+                v-model="val.timeout"
+                @blur="changeCAN(val.timeout,val.id,6)"
               >
             </div>
           </div>
@@ -162,6 +168,7 @@
             <div class="select_System fl but" :class="isSystem == 0?'active':''" v-on:click="changeBg(0)">System</div>
             <div class="select_Pary fl but" :class="isSystem == 1?'active':''" v-on:click="changeBg(1)">Pary</div>
             <div class="select_CAN fl but" :class="isSystem == 2?'active':''" v-on:click="changeBg(2)">CAN</div>
+            <div class="select_CAN fl but" :class="isSystem == 3?'active':''" v-on:click="changeBg(3)">DELAY</div>
 
           </div>
           <div class="new_script" v-on:click="newAddScript">新建脚本</div>
@@ -264,6 +271,20 @@
               <span></span>
             </div>
           </div>
+          <!--          DELAY-->
+          <div class="CAN tab_fix" :class="isSystem == 3?'':'hide'">
+            <div class="CAN_BOX">
+              <span class="fl">Part NO</span>
+              <input type="text" class="Part_NO fl" v-model="DELAY_Part_No">
+              <span class="fl">DELAY</span>
+              <input type="text" class="ID_WEI fl" v-model="DELAY_">
+            </div>
+
+            <div class="but" v-on:click="SendDELAYData">
+              确定
+              <span></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -272,6 +293,14 @@
 
 <script>
     export default {
+      props:{
+        SystemList:{
+
+        },
+        CANList:{
+          type:Array
+        }
+      },
         name: "Configuremain",
       data(){
           return{
@@ -300,7 +329,7 @@
 
 
             //System整体数据
-            Systems:[],
+            Systems:{},
             //System表格内容
             timeORnum:'1',    //0为设定时间  1为设定次数
             ONOFF:'1',        //1为ON   2为OFF
@@ -309,7 +338,13 @@
             set_Num:'',
             Run:'',
             restTime:'',
-            RunTime:''
+            RunTime:'',
+
+
+
+            //DELAY数据
+            DELAY_Part_No:'',
+            DELAY_:''
           }
       },
       created(){
@@ -337,7 +372,7 @@
           this.isSystem = i;
         },
 
-       //System数据  start-----------------------
+       //System数据  start
         SendSysteamData(){
 
           if(this.timeORnum == 0){
@@ -345,16 +380,16 @@
           }else if(this.timeORnum == 1){
             this.set_Time = 0
           }
-          this.Systems = []
-          this.Systems.push({
-            Proname:this.produNmae,
-            set_Time:this.set_Time,
-            set_Num:this.set_Num,
-            run:this.ONOFF,
-            restTime:this.restTime,
-            RunTime:this.RunTime
-          })
-          console.log(this.Systems)
+          this.Systems = {
+            project_name:this.produNmae,
+            set_time:this.set_Time,
+            set_num:this.set_Num,
+            is_interval:this.ONOFF,
+            rest_time:this.restTime,
+            run_time:this.RunTime,
+            script:this.$store.state.ScriptID
+          }
+          this.$emit('SyetemJSON',this.Systems)
         },
         //System数据  end---------
 
@@ -373,20 +408,83 @@
           if(this.Timeout == ""){
             this.Timeout = null
           }
-          this.TableData.push({
-            Part_NO:this.Part_No,
-            Type:'CAN',
-            Time:null,
-            CAN_SEND_ID:this.CAN_SEND_ID,
-            Length_SEND:this.Length_SEND,
-            Message_SEND:this.Message_SEND,
-            Timeout:this.Timeout
+          let Obj = {
+            part_no:this.Part_No,
+            order_type:0,
+            delay_time:null,
+            can_send_id:this.CAN_SEND_ID,
+            length_send:this.Length_SEND,
+            message_send:this.Message_SEND,
+            timeout:this.Timeout,
+            part:this.$store.state.PartID
+          };
+          this.$axios({
+            method:'post',
+            data:Obj,
+            url:"orders/"
+          }).then(res=>{
+            console.log(res)
+            this.TableData.push(res.data)
+
+            //置空input输入内容
+            this.Part_No = null;
+            this.CAN_SEND_ID = null;
+            this.Length_SEND = null;
+            this.Message_SEND = null;
+            this.Timeout = null;
+          }).catch(err=>{
+            console.log(err)
+            console.log(err.response.data)
           })
-          console.log(this.TableData)
+        },
+
+        //修改CAN某行某个数据
+        changeCAN(val,id,index){
+          var CANData = {}
+          if(index == 1){
+            CANData={
+              id:id,
+              part_no:val,
+            }
+          }else if(index == 2){
+            CANData={
+              id:id,
+              delay_time:val,
+            }
+          }else if(index == 3){
+            CANData={
+              id:id,
+              can_send_id:val,
+            }
+          }else if(index == 4){
+            CANData={
+              id:id,
+              length_send:val,
+            }
+          }else if(index == 5){
+            CANData={
+              id:id,
+              message_send:val,
+            }
+          }else if(index == 6){
+            CANData={
+              id:id,
+              timeout:val,
+            }
+          }
+          this.$axios({
+            method:"patch",
+            url:`/orders/${id}/`,
+            data:CANData
+          }).then(res=>{
+            console.log(res.data)
+          }).catch(err=>{
+            console.log(err)
+          })
         },
 
         // 删除某行数据
-        aaa(index){
+        aaa(index,id){
           if(this.isCtrl){
             this.selectRow = index
             console.log(this.selectRow,index)
@@ -395,12 +493,19 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
-              this.TableData.splice(index,1);
-              this.selectRow = -1;
+
+              this.$axios({
+                method:"delete",
+                url:`/orders/${id}/`
+              }).then(res=>{
+                this.$message({
+                  type: 'success',
+                  message: '删除成功!'
+                });
+                this.TableData.splice(index,1);
+                this.selectRow = -1;
+              })
+
             }).catch(() => {
               // this.$message({
               //   type: 'info',
@@ -416,12 +521,57 @@
 //         添加part
         ADDPart(){
           // PartNum:'',
-          //   PartName:'',
+          //   PartName:'',PartNum   PartName
+          let ObjDom={
+            serial_num:this.PartNum,
+            name:this.PartName,
+            script:this.$store.state.ScriptID
+          };
+          this.PartName = "";
+          this.PartNum = "";
+          this.$emit("ADDParts",ObjDom)
+
+        },
+
+
+// =================================分割线======================================
+        // DELAY数据
+        SendDELAYData(){
+          // DELAY_Part_No    DELAY_
+          let DELAYObj={
+            part_no:this.DELAY_Part_No,
+            order_type:1,
+            delay_time:this.DELAY_,
+            part:this.$store.state.PartID
+          }
+          this.$axios({
+            method:"post",
+            url:"/orders/",
+            data:DELAYObj
+          }).then(res=>{
+            console.log(res)
+            this.TableData.push(res.data)
+
+
+            this.DELAY_Part_No = null
+            this.DELAY_ = null
+
+          }).catch(err=>{
+            console.log(err)
+          })
         },
 
         //新添加脚本
         newAddScript(){
           this.$store.commit('SHOWENIT_HIDE',true)
+        }
+      },
+      watch:{
+        SystemList(news,old){
+          console.log(news)
+        },
+        CANList(news,olds){
+          this.TableData = news;
         }
       }
     }
@@ -482,12 +632,12 @@
                 width: 3.5%;
               }
               .Name{
-                width: 5%;
+                width: 7%;
                 text-align: left;
                 text-indent: 5px;
               }
               .Nature{
-                width: 91.1%;
+                width: 89.1%;
                 text-align: left;
                 text-indent: 14px;
               }
@@ -614,11 +764,11 @@
           position: relative;
           /*tab切换*/
           .tab_select{
-            width: 1.6rem;
+            width: 2.6rem;
             height:.24rem;
             .but{
               /*padding:8px 15px 7px 16px;*/
-              width: 31.5%;
+              width: 23.5%;
               height:$height;
               font-size: $Littleize;
               color:SiceColor();

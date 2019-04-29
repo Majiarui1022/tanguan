@@ -4,10 +4,17 @@
       <Configureside
         :BigScriptList="BigScriptList"
         :PartLists="PartLists"
+        @showPartAndSystem="showPartAndSystem"
+        @SHowPartAllData="SHowPartAllData"
       ></Configureside>
     </el-aside>
     <el-main>
-      <Configuremain></Configuremain>
+      <Configuremain
+        :SystemList="SystemList"
+        :CANList="CANList"
+        @SyetemJSON="SyetemJSON"
+        @ADDParts="ADDParts"
+      ></Configuremain>
     </el-main>
     <ConfigureEnit
       :BigScriptList="BigScriptList"
@@ -26,34 +33,127 @@
       data(){
         return{
           BigScriptList:[],
-          PartLists:[]
+          PartLists:[],
+          SystemList:{},
+          CANList:[],    ///CAN列表数据
         }
       },
 
 
 
       methods:{
-          // 请求本地协议列表
+
+
+          // 请求协议列表
         getScriptList(){
-          let that = this
-          this.$api.ScriptList({
+          this.$axios({
+            method: "get",
+            url: "scripts/"
           }).then(res=>{
-            console.log(res)
-            this.BigScriptList = res;
-            that.$store.commit("SCRIPT_ID",res[0].id)              //存入vuex协议ID
-            this.getPartList()
+            // console.log(res.data)
+                this.BigScriptList = res.data;
+                this.$store.commit("SCRIPT_ID",res.data[0].id)                //存入vuex协议ID
+                this.getPartList()
+          }).catch(err=>{
+            console.log(err)
           })
         },
 
-        // 请求本地Part列表
+
+        // // 请求Part列表
         getPartList(){
           let that = this
-          this.$api.ParstList({
+
+          this.$axios({
+            //获取Part
+            method: "get",
+            url: `parts/?script=${this.$store.state.ScriptID}`
           }).then(res=>{
-            console.log(res)
-            this.PartLists = res;
-            that.$store.commit("PART_ID",res[0].id)              //存入vuex协议ID
+            console.log(res.data)
+            this.PartLists = res.data;
+            if(res.data.length>0){
+              this.$store.commit("PART_ID",res.data[0].id)              //存入vuex协议ID
+            }else{
+              this.$store.commit("PART_ID",-1)              //存入vuex协议ID
+            }
+            this.getSystemList()
+            this.getCan()
+          }).catch(err=>{
+            console.log(err)
+          });
+        },
+
+
+        // 初始获取SystemList  and   点击协议获取System
+      getSystemList(){
+          let that = this
+
+          this.$axios({
+            //获取Part
+            method: "get",
+            url: `/sequences/${this.$store.state.ScriptID}`
+          }).then(res=>{
+            this.SystemList = res.data
+            console.log(this.SystemList)
+            }).catch(err=>{
+            console.log(err)
+          });
+        },
+
+        //子组件传值修改System
+        SyetemJSON(objs){
+          this.$axios({
+            method:"post",
+            url:'sequences/',
+            header:{
+              responseType:"json"
+            },
+            data:objs,
+          }).then(res=>{
+            this.SystemList = res.data
+          }).catch(err=>{
+            console.log(err.response.data)
+            console.log(JSON.stringify(err.request.response))
           })
+        },
+
+        //添加Part
+        ADDParts(ObjData){
+          this.$axios({
+            method:"post",
+            url:"parts/",
+            data:ObjData
+          }).then(res=>{
+            console.log(res.data)
+            this.PartLists.push(res.data)
+          }).catch(err=>{
+            console.log(err)
+          })
+
+        },
+
+
+        // 初始获取CAN表格数据
+
+        getCan(){
+          this.$axios({
+            method:"get",
+            url:`/orders/?part=${this.$store.state.PartID}`
+          }).then(res=>{
+            console.log(res.data)
+            this.CANList = res.data;
+          }).catch((err=>{
+            console.log(err)
+          }))
+        },
+
+        //子组件点击协议再次请求part  system
+        showPartAndSystem(){
+          this.getPartList()
+        },
+        //子组件点击part再次请求其余数据
+        SHowPartAllData(){
+          this.getCan();
         }
       },
       created() {

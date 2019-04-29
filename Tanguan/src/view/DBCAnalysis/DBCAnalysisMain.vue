@@ -34,353 +34,24 @@
               <div class="Table_row">
                 <div class="table_num fl">1</div>
                 <div class="table_Part_NO fl">Part.NO</div>
+                <div class="table_Type fl">Type</div>
+                <div class="table_Time fl">Time(ms)</div>
                 <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
                 <div class="table_Message_send fl">Message_SEND</div>
                 <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
+                <div class="table_Length_SEND fl">Length_REV</div>
                 <div class="table_Message_REV fl">Message_REV</div>
               </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
-              </div>
-              <div class="Table_row">
-                <div class="table_num fl">1</div>
-                <div class="table_Part_NO fl">Part.NO</div>
-                <div class="table_CAN_SEND_ID fl">CAN_SEND_ID</div>
-                <div class="table_Message_send fl">Message_SEND</div>
-                <div class="table_CAN_REV_ID fl">CAN_REV_ID</div>
-                <div class="table_Length_SEND fl">Length_SEND</div>
-                <div class="table_Message_REV fl">Message_REV</div>
+              <div class="Table_row" v-for="(val,index) in CANList">
+                <div class="table_num fl">{{index+2}}</div>
+                <div class="table_Type fl">Type</div>
+                <div class="table_Time fl">Time</div>
+                <div class="table_Part_NO fl">{{val.part_no}}</div>
+                <div class="table_CAN_SEND_ID fl">{{val.can_send_id}}</div>
+                <div class="table_Message_send fl">{{val.message_send}}</div>
+                <div class="table_CAN_REV_ID fl">{{val.can_rev_id}}</div>
+                <div class="table_Length_SEND fl">{{val.length_rev}}</div>
+                <div class="table_Message_REV fl">{{val.message_rev}}</div>
               </div>
             </div>
 <!--            <table>-->
@@ -630,6 +301,11 @@
 
 <script>
     export default {
+      props:{
+        CANList:{
+          type:Array
+        }
+      },
         name: "DBCAnalysisMain",
       methods:{
         changeDBC(){
@@ -776,17 +452,26 @@
                 .table_Part_NO{
                   width:10.68%;
                 }
+                .table_Type{
+                  width: 5%;
+                }
+                .table_Time{
+                  width: 9%;
+                }
                 .table_CAN_SEND_ID{
-                  width:18.55%;
+                  /*width:18.55%;*/
+                  width:11.55%;
                 }
                 .table_Message_send{
                   width:18.23%;
                 }
                 .table_CAN_REV_ID{
-                  width:15.26%;
+                  /*width:15.26%;*/
+                  width:11.26%;
                 }
                 .table_Length_SEND{
-                  width:17.67%;
+                  /*width:17.67%;*/
+                  width: 14.67%;
                 }
                 .table_Message_REV{
                   width:15.54%;

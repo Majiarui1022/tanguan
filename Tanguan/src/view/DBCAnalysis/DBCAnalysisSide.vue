@@ -3,80 +3,56 @@
     <div class="DBCAnalysisSide-side-box">
       <div class="DBCAnalysisSide-side">
         <p>编辑协议</p>
+<!--        <div class="ListBox">-->
+<!--          <div class="ScriptFirst_name">-->
+<!--            <span>{{BigScriptList[isScriptIndex].name}}</span>-->
+<!--            <div class="low-jian">-->
+<!--              <img src="../../assets/img/right_down.png" alt="">-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="ScriptList">-->
+<!--            <ul>-->
+<!--              <li v-if="BigScriptList" v-for="(val,index) in BigScriptList">-->
+<!--                &lt;!&ndash;            <span class="One fl">Part1</span>&ndash;&gt;-->
+<!--                <span class="Two fl" :id="val.id" v-on:click="selectScript(val.id,index)">{{val.name}}</span>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="PartList">-->
+<!--            <ul>-->
+<!--              <li>-->
+<!--                <span class="One fl">Part1</span>-->
+<!--                <span class="Two fl">CAN_无线通讯验证</span>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
         <div class="ListBox">
-          <div class="ScriptFirst_name">
-            <span>Config-14v-20181010</span>
+          <div class="ScriptFirst_name" v-on:click="ChangeScript">
+            <span v-if="BigScriptList[isScriptIndex]">{{BigScriptList[isScriptIndex].name}}</span>
             <div class="low-jian">
-              <img src="../../assets/img/right_down.png" alt="">
+              <img src="../../assets/img/right_down.png" alt="" :class="isScript == true?'active':''">
             </div>
           </div>
 
-          <div class="ScriptList">
+          <div class="ScriptList" :class="isScript == true?'':'hide'">
             <ul>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
-              </li>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
+              <li v-if="BigScriptList" v-for="(val,index) in BigScriptList">
+                <!--            <span class="One fl">Part1</span>-->
+                <span class="Two fl" :id="val.id" v-on:click="selectScript(val.id,index)">{{val.name}}</span>
               </li>
             </ul>
           </div>
-          <div class="PartList">
+          <div class="PartList"  :class="isScript == true?'hide':''">
             <ul>
-              <li>
-                <span class="One fl">Part1</span>
-                <span class="Two fl">CAN_无线通讯验证</span>
+              <li v-if="PartLists" v-for="value in PartLists" v-on:click="ShowSystem(value.id)">
+                <span class="One fl">{{value.serial_num}}</span>
+                <span class="Two fl">{{value.name}}</span>
               </li>
             </ul>
           </div>
         </div>
-
       </div>
     </div>
     <footer>
@@ -98,7 +74,50 @@
 
 <script>
     export default {
-        name: "DBCAnalysisSide"
+      props:{
+        BigScriptList:{
+          type:Array
+        },
+        PartLists:{
+          type:Array
+        }
+
+      },
+        name: "DBCAnalysisSide",
+      data(){
+        return{
+          isScript:false,
+          isScriptIndex:0              //默认显示协议的下标
+        }
+      },
+      methods:{
+        // 控制脚本显示与隐藏
+        ChangeScript(){
+          this.isScript = !this.isScript
+        },
+        // 点击脚本
+        selectScript(id,index){
+          this.$store.commit("SCRIPT_ID",id)
+          this.isScript = !this.isScript;
+          this.isScriptIndex = index
+          this.$emit("showPartAndSystem")
+        },
+        //点击part
+        ShowSystem(id){
+          this.$store.commit("PART_ID",id)
+          this.$emit("SHowPartAllData")
+        },
+
+
+      },
+      watch:{
+        BigScriptList(news,old){
+          console.log(news[0].name)
+        },
+        PartLists(news,old){
+          console.log(news)
+        }
+      }
     }
 </script>
 
@@ -183,6 +202,7 @@
                 font-size:$BigSize;
                 font-family:CambriaMath;
                 color:SiceColor();
+                cursor: pointer;
                 .One{
                   margin-right:.36rem;
                 }
@@ -207,7 +227,6 @@
             }
           }
           .PartList{
-            display: none;
             ul{
               width: $width;
               height:$height;
@@ -221,6 +240,7 @@
                 font-size:$BigSize;
                 font-family:CambriaMath;
                 color:SiceColor();
+                cursor:pointer;
                 .One{
                   margin-right:.36rem;
                 }
