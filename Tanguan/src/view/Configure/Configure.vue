@@ -64,6 +64,7 @@
         getPartList(){
           let that = this
 
+          console.log('我执行了')
           this.$axios({
             //获取Part
             method: "get",
@@ -93,6 +94,7 @@
             method: "get",
             url: `/sequences/${this.$store.state.ScriptID}`
           }).then(res=>{
+            console.log(res.data)
             this.SystemList = res.data
             console.log(this.SystemList)
             }).catch(err=>{
@@ -154,6 +156,7 @@
         //子组件点击part再次请求其余数据
         SHowPartAllData(){
           this.getCan();
+          this.getSystemList()
         }
       },
       created() {

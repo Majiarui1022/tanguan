@@ -35,15 +35,24 @@
                 <tr>
                   <td class="table_num">1</td>
                   <td class="table_Part_NO">Part</td>
+                  <td class="table_Type">Type</td>
+                  <td class="table_Time">Time(ms)</td>
                   <td class="table_CAN_SEND_ID">CAN_SEND_ID</td>
                   <td class="table_Message_send">Message_SEND</td>
                   <td class="table_CAN_REV_ID">CAN_REV_ID</td>
                   <td class="table_Length_SEND">Length_REV</td>
                   <td class="table_Message_REV">Message_REV</td>
                 </tr>
-                <tr v-for="(val,index) in CANList" v-on:click="selectMessageREV(val.id)">
+
+                <tr
+                  v-for="(val,index) in CANList"
+                  :class="ischeckeds == index ? 'active' : ''"
+                  v-on:click="selectMessageREV(val.id,index)"
+                >
                   <td class="table_num">{{index+2}}</td>
                   <td class="table_Part_NO">{{val.part_no}}</td>
+                  <td class="table_Type">{{val.order_type}}</td>
+                  <td class="table_Time">{{val.delay_time}}</td>
                   <td class="table_CAN_SEND_ID">{{val.can_send_id}}</td>
                   <td class="table_Message_send">{{val.message_send}}</td>
                   <td class="table_CAN_REV_ID">{{val.can_rev_id}}</td>
@@ -71,25 +80,19 @@
                     <tbody>
                       <tr>
                         <td class="name">Message_REV</td>
-                        <td>OF</td>
-                        <td>01</td>
-                        <td>5F</td>
-                        <td>11</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>01</td>
+                        <td v-for="val in arr2">{{val}}</td>
                       </tr>
                       <tr>
                         <td class="name">二进制数</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
-                        <td>0000 1111</td>
+                        <td v-for="val in arr1">{{val}}</td>
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
+<!--                        <td>0000 1111</td>-->
                       </tr>
                     </tbody>
                   </table>
@@ -101,38 +104,72 @@
                     <table>
                       <tbody>
                         <tr>
-                          <th>Signel.&nbsp;Name</th>
-                          <th>起始段</th>
-                          <th>起始位</th>
-                          <th>位数</th>
-                          <th></th>
-                          <th>单位</th>
-                          <th>Max</th>
-                          <th>Min</th>
-                          <th><img src="../../assets/img/add.png" alt=""></th>
+                          <th style="width: 25%;">Signel.&nbsp;Name</th>
+                          <th style="width: 10%;">起始段</th>
+                          <th style="width: 10%;">起始位</th>
+                          <th style="width: 10%;">位数</th>
+                          <th style="width: 8%;">单位</th>
+                          <th style="width: 7%;"></th>
+                          <th style="width: 10%;">Max</th>
+                          <th style="width: 10%;">Min</th>
+                          <th style="width: 10%;"><img src="../../assets/img/add.png" alt="" v-on:click="ADDZhiling"></th>
                         </tr>
-                        <tr>
+                        <tr v-for="(values,index) in DBCGUI" :key="index">
                           <td class="Signel_Name">
-                            <input type="text">
+                            <input
+                              type="text"
+                              v-model="values.name"
+                              @blur="changeZhiWord(values.id,values.name,1,values.is_check)"
+                            >
                           </td>
-                          <td class="start_duan">1</td>
-                          <td class="end_duan">2</td>
+                          <td class="start_duan">
+                            <input
+                              type="text"
+                              v-model="values.start_paragraph"
+                              @blur="changeZhiWord(values.id,values.start_paragraph,2,values.is_check)"
+                            >
+                          </td>
+                          <td class="end_duan">
+                            <input
+                              type="text"
+                              v-model="values.start_place"
+                              @blur="changeZhiWord(values.id,values.start_place,3,values.is_check)"
+                            >
+                          </td>
                           <td class="weishu">
-                            <input type="number">
-                          </td>
-                          <td class="checkeds_DBC">
-                            <span>
-                              <i class="el-icon-check"></i>
-                            </span>
+                            <input
+                              type="number"
+                              v-model="values.places"
+                              @blur="changeZhiWord(values.id,values.places,4,values.is_check)"
+                            >
                           </td>
                           <td class="unit">
-                            <input type="text">
+                            <input
+                              type="text"
+                              v-model="values.unit"
+                              @blur="changeZhiWord(values.id,values.unit,5,values.is_check)"
+                            >
+                          </td>
+                          <td class="checkeds_DBC">
+                            <span v-on:click="changeChecked(values.id,index)">
+                              <i class="el-icon-check" :class="values.is_check == true?'':'hide'"></i>
+                            </span>
                           </td>
                           <td class="Max">
-                            <input type="text">
+                            <input
+                              type="text"
+                              v-model="values.max"
+                              @blur="changeZhiWord(values.id,values.max,6,values.is_check,values.min)"
+                              :disabled="!values.is_check"
+                            >
                           </td>
                           <td class="Min">
-                            <input type="text">
+                            <input
+                              type="text"
+                              v-model="values.min"
+                              @blur="changeZhiWord(values.id,values.min,7,values.is_check,values.max)"
+                              :disabled="!values.is_check"
+                            >
                           </td>
                           <td class="Delete"></td>
                         </tr>
@@ -149,69 +186,13 @@
                     <div class="Table_scrollY">
                       <div class="Table_scroll_Box">
                         <table>
-                          <tr>
-                            <td class="Name fl">燃油压力计量</td>
-                            <td class="Num fl">63</td>
-                            <td class="unit fl">kpa</td>
+                          <tr v-for="val in DBCTable">
+                            <td class="Name fl">{{val.name}}</td>
+                            <td class="Num fl">{{val.num}}</td>
+                            <td class="unit fl">{{val.unit}}</td>
                             <td class="states fl">
-                              <span class="reds"></span>
+                              <span :class="val.status == 1?'greens': val.status == 2 ? 'reds':'' "></span>
                             </td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl">燃油压力计量</td>
-                            <td class="Num fl">63</td>
-                            <td class="unit fl">kpa</td>
-                            <td class="states fl">
-                              <span class="greens"></span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
-                          </tr>
-                          <tr>
-                            <td class="Name fl"></td>
-                            <td class="Num fl"></td>
-                            <td class="unit fl"></td>
-                            <td class="states fl"></td>
                           </tr>
                         </table>
                       </div>
@@ -239,9 +220,214 @@
         }
       },
         name: "DBCAnalysisMainTwo",
+      data(){
+        return{
+          ischeckeds:-1,
+          arr1:[],
+          arr2:[],
+          DBCGUI:[],            //DBC解析规则
+          zhilingID:-1,
+          DBCTable:[]
+
+
+
+
+        }
+      },
       methods:{
         aaaa(){
-          console.log(123)
+          console.log(this.zhilingID);
+          if(this.zhilingID == -1){
+            return
+          }
+          this.$axios({
+            method:"post",
+            url:`/ana_rules/?order=${this.zhilingID}`,
+            data:this.DBCGUI
+          }).then(res=>{
+            console.log(res.data)
+            this.DBCTable = res.data
+            // status   0是不存在   1是范围之内(green)  2是范围之外（red）
+          }).catch(err=>{
+            console.log(err)
+          })
+        },
+        // 获取二进制十六进制
+        selectMessageREV(id,index){
+          this.ischeckeds = index;
+          this.zhilingID = id;
+          this.$axios({
+            method:"get",
+            url:`orders/${id}`
+          }).then(res=>{
+            let arr = [];
+              var str = '';
+            var a = 0;
+            for(var i =0;i<res.data.b_message_rev.length;i++){
+              a++;
+              if(i%4 == 0){
+                str +=" ";
+              }
+              if(a%8 == 0){
+                str += res.data.b_message_rev[i];
+                arr.push(str)
+                str = ''
+              }else{
+                str += res.data.b_message_rev[i]
+              }
+            }
+            this.arr1 = arr
+            var str2 = ""
+            var arr2 = [];
+            var c = 0
+            for(var j = 0;j<res.data.message_rev.length;j++){
+              if(c == 2){
+                arr2.push(str2)
+                c = 0
+                str2 = ""
+              }
+              if(res.data.message_rev[j] != " "){
+                c++;
+                str2 += res.data.message_rev[j]
+              }
+            }
+            if(str2 != ""){
+              arr2.push(str2)
+            }
+            this.arr2 = arr2
+          }).catch(err=>{
+            coonsole.log(err.data)
+          })
+          //  获取某条指令的全部解析规则
+
+          this.$axios({
+            method:"get",
+            url:`ana_rules/?order=${id}`
+          }).then(res=>{
+            console.log(res.data)
+            this.DBCGUI = res.data
+          }).catch(err=>{
+            console.log(err)
+          })
+
+        },
+
+
+        // 改变指令解析选中状态
+        changeChecked(id,index){
+          this.DBCGUI[index].is_check = !this.DBCGUI[index].is_check
+          if(this.DBCGUI[index].is_check){
+            this.$notify({
+            title: '警告',
+              message: '选择之后Max与Min为必填项',
+              type: 'warning'
+          });
+          }else{
+            this.DBCGUI[index].max = null;
+            this.DBCGUI[index].min = null;
+          }
+          this.changeZhiWord(id,this.DBCGUI[index].is_check,9)
+        },
+        // 更改单个指令内容
+        changeZhiWord(id,val,zhi,is_check,valuc){
+          if(id == null){
+            return
+          }
+          let ObjData = {};
+          if(zhi == 1){
+            ObjData={
+              id:this.zhilingID,
+              name:val,
+              is_check:is_check
+            }
+          }else if(zhi == 2){
+            ObjData={
+              id:this.zhilingID,
+              start_paragraph:val,
+              is_check:is_check
+            }
+          }else if(zhi == 3){
+            ObjData={
+              id:this.zhilingID,
+              start_place:val,
+              is_check:is_check
+            }
+          }else if(zhi == 4){
+            ObjData={
+              id:this.zhilingID,
+              places:val,
+              is_check:is_check
+            }
+          }else if(zhi == 5){
+            ObjData={
+              id:this.zhilingID,
+              unit:val,
+              is_check:is_check
+            }
+          }else if(zhi == 6){
+            ObjData={
+              id:this.zhilingID,
+              max:val,
+              is_check:is_check,
+              min:valuc
+            }
+          }else if(zhi == 7){
+            ObjData={
+              id:this.zhilingID,
+              min:val,
+              is_check:is_check,
+              max:valuc
+            }
+          }else if(zhi == 9){
+            ObjData={
+              id:this.zhilingID,
+              is_check:val,
+            }
+          }
+
+          this.$axios({
+            method:'patch',
+            url:`/ana_rules/${id}/`,
+            data:ObjData
+          }).then(res=>{
+            console.log(res.data)
+            this.DBCTable = res.data
+          }).catch(err=>{
+            console.log(err)
+          })
+        },
+
+        // 添加DBC解析
+        ADDZhiling(){
+          if(this.zhilingID == -1){
+            return
+          }
+          let Object={
+            id: null,
+            order: this.zhilingID,
+            name: null,
+            start_paragraph: null,
+            start_place: null,
+            places: null,
+            is_check: false,
+            unit: null,
+            max: null,
+            min: null
+          }
+            this.DBCGUI.push(Object)
+        }
+      },
+      created(){
+      },
+      watch:{
+        CANList(news,old){
+            this.ischeckeds = -1;
+            this.zhilingID = -1;
+            this.arr1 = [];
+            this.arr2 = [];
+            this.DBCGUI = [];
+            this.DBCTable = [];
+            console.log('监听')
         }
       },
       destroyed() {
@@ -377,25 +563,35 @@
                     text-align: center;
                   }
                   .table_num{
-                    width:addWidth(.42rem,12.45);
+                    width:5.68%;
                   }
                   .table_Part_NO{
-                    width:addWidth(1.33rem,12.45);
+                    width:6.68%;
+                  }
+                  .table_Type{
+                    width: 5%;
+                  }
+                  .table_Time{
+                    width: 9%;
                   }
                   .table_CAN_SEND_ID{
-                    width:addWidth(2.31rem,12.45);
+                    width:11.55%;
                   }
                   .table_Message_send{
-                    width:addWidth(2.27rem,12.45);
+                    width:18.23%;
                   }
                   .table_CAN_REV_ID{
-                    width:addWidth(1.9rem,12.45);
+                    width:11.26%;
                   }
                   .table_Length_SEND{
-                    width:addWidth(2.2rem,12.45);
+                    width: 14.67%;
                   }
                   .table_Message_REV{
-                    width:addWidth(2.01rem,12.45);
+                    width:24.54%;
+                  }
+                  &.active{
+                    background: #416ab1;
+                    border-color:#416ab1;
                   }
                 }
               }
@@ -479,7 +675,7 @@
                       border-bottom: 2px solid #057D8C;
                     }
                     table{
-
+                      width: $width;
                       tr{
                         th,td{
                           text-align: center;
@@ -494,6 +690,8 @@
                             border-bottom: 1px solid #057D8C;
                             outline: none;
                             color:SiceColor();
+                            display: block;
+                            margin:0 auto;
                             input::-webkit-input-placeholder {
                               color:SiceColor();
                             }
@@ -511,60 +709,71 @@
                             width: .27rem;
                             height:.27rem;
                             display: block;
+                            cursor: pointer;
                           }
                         }
                         /*Signel_Name   start_duan   end_duan  weishu    checkeds_DBC   unit  Max  Min  Delete*/
                         .Signel_Name{
                           width:25%;
                           input{
-                            width: 100%;
+                            width: 80%;
                           }
                         }
                         .start_duan{
                           width:10%;
+                          input{
+                            width: 80%;
+                          }
                         }
                         .end_duan{
                           width:10%;
+                          input{
+                            width: 80%;
+                          }
                         }
                         .weishu{
                           width:10%;
                           input{
-                          width: 100%;
-                        }
+                            width: 80%;
+                          }
                         }
                         .checkeds_DBC{
-                          width:10%;
+                          width:7%;
                           span{
                             width: .2rem;
                             height:.2rem;
                             display: block;
                             border:1px solid SiceColor();
                             position: relative;
+                            margin:0 auto;
                             i{
                               position: absolute;
                               font-size: $BigSize;
                               color:SiceColor();
                               left: 0;
                               top: 0;
+                              &.hide{
+                                display: none;
+                              }
                             }
                           }
                         }
                         .unit{
-                          width:5%;
+                          width:8%;
                           input{
-                          width: 100%;
+                            width: 80%;
                         }
                         }
                         .Max{
                           width:10%;
                           input{
-                            width: 100%;
+                            width: 80%;
                           }
                         }
                         .Min{
                           width:10%;
                           input{
-                            width: 100%;
+                            width: 80%;
                           }
                         }
                         .Delete{
@@ -648,16 +857,16 @@
                               line-height: .35rem;
                             }
                             .Name{
-                              width: 40%;
+                              width: 38.4%;
                             }
                             .Num{
-                              width: 20%;
+                              width: 19.2%;
                             }
                             .unit{
-                              width:20%;
+                              width:19.3%
                             }
                             .states{
-                              width: 19%;
+                              width: 18.3%
                             }
                               .reds{
                                 width:16px;

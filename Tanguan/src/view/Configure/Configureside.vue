@@ -71,6 +71,7 @@
         },
 
         ShowSystem(id){
+          console.log(123)
           this.$store.commit("PART_ID",id)
           this.$emit("SHowPartAllData")
         },

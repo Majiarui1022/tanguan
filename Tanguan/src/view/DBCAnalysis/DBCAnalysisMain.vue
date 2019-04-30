@@ -44,9 +44,9 @@
               </div>
               <div class="Table_row" v-for="(val,index) in CANList">
                 <div class="table_num fl">{{index+2}}</div>
-                <div class="table_Type fl">Type</div>
-                <div class="table_Time fl">Time</div>
                 <div class="table_Part_NO fl">{{val.part_no}}</div>
+                <div class="table_Type fl">{{val.order_type}}</div>
+                <div class="table_Time fl">{{val.delay_time}}</div>
                 <div class="table_CAN_SEND_ID fl">{{val.can_send_id}}</div>
                 <div class="table_Message_send fl">{{val.message_send}}</div>
                 <div class="table_CAN_REV_ID fl">{{val.can_rev_id}}</div>

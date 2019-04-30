@@ -16,32 +16,34 @@
               <tr>
                 <td class="Num fl">2</td>
                 <td class="Name fl">项目名称</td>
-                <td class="Nature fl">{{SystemList.project_name}}</td>
+                <td class="Nature fl">
+                  <span v-if="SystemList">{{SystemList.project_name}}</span>
+                </td>
               </tr>
               <tr>
                 <td class="Num fl">3</td>
                 <td class="Name fl">设定时间</td>
-                <td class="Nature fl">{{SystemList.set_time}}</td>
+                <td class="Nature fl"><span>{{SystemList.set_time}}</span></td>
               </tr>
               <tr>
                 <td class="Num fl">4</td>
                 <td class="Name fl">间隔运行</td>
-                <td class="Nature fl">{{SystemList.is_interval == 1?'ON':'OFF'}}</td>
+                <td class="Nature fl"><span>{{SystemList.is_interval == 1?'ON':'OFF'}}</span></td>
               </tr>
               <tr>
                 <td class="Num fl">5</td>
                 <td class="Name fl">休息时间</td>
-                <td class="Nature fl">{{SystemList.rest_time}}</td>
+                <td class="Nature fl"><span>{{SystemList.rest_time}}</span></td>
               </tr>
               <tr>
                 <td class="Num fl">6</td>
                 <td class="Name fl">运行时间</td>
-                <td class="Nature fl">{{SystemList.run_time}}</td>
+                <td class="Nature fl"><span>{{SystemList.run_time}}</span></td>
               </tr>
               <tr>
                 <td class="Num fl">7</td>
                 <td class="Name fl">设定次数</td>
-                <td class="Nature fl">{{SystemList.set_num}}</td>
+                <td class="Nature fl"><span>{{SystemList.set_num}}</span></td>
               </tr>
               <tr>
                 <td class="Num fl">8</td>
@@ -389,6 +391,7 @@
             run_time:this.RunTime,
             script:this.$store.state.ScriptID
           }
+          console.log(this.Systems)
           this.$emit('SyetemJSON',this.Systems)
         },
         //System数据  end---------
@@ -568,6 +571,7 @@
       },
       watch:{
         SystemList(news,old){
+          console.log('监听')
           console.log(news)
         },
         CANList(news,olds){
